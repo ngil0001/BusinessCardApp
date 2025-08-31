@@ -8,16 +8,24 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.filled.Share
+
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+
 import com.example.businesscardapp.ui.theme.BusinessCardAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -31,6 +39,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     BusinessLogo(modifier = Modifier)
+                    ContactSection(modifier = Modifier)
                 }
             }
         }
@@ -63,5 +72,68 @@ fun BusinessLogo(modifier: Modifier = Modifier) {
         WorkerName(
             name = "Noah Gilkey", jobRole = "Business Intel Developer", modifier = Modifier
         )
+    }
+}
+
+//bottom container
+//first of three elements; Phone number, social handle, email
+@Composable
+fun PhoneNumber(number: String, modifier: Modifier){
+    //icon
+    Row {
+        Icon(
+            imageVector = Icons.Filled.Phone,
+            contentDescription = "Phone"
+        )
+        // text passed from ContactSection
+        Text(
+            text = number
+        )
+    }
+}
+@Composable
+fun SocialMedia(socialHandle: String, modifier: Modifier) {
+    //icon
+    Row {
+        Icon(
+            imageVector = Icons.Filled.Share,
+            contentDescription = "Share"
+        )
+        // text passed from ContactSection
+        Text(
+            text = socialHandle
+        )
+    }
+
+}
+@Composable
+fun Email(email: String, modifier: Modifier) {
+    //icon
+    Row {
+        Icon(
+            imageVector = Icons.Filled.Email,
+            contentDescription = "Home"
+        )
+        // text passed from ContactSection
+        Text(
+            text = email
+        )
+    }
+
+}
+//main container for the bottom section
+@Composable
+fun ContactSection(modifier: Modifier){
+    //aligns the container to the bottom center
+    Box(
+        modifier = modifier,
+        contentAlignment = Alignment.BottomCenter
+    ){
+        //aligns the components in a column; each component is self aligned in a row
+        Column {
+            PhoneNumber(number = "1111111111", modifier)
+            SocialMedia(socialHandle = "@111111", modifier)
+            Email(email = "1111@11111.com", modifier)
+        }
     }
 }
