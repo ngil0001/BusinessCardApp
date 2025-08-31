@@ -6,6 +6,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -39,28 +41,27 @@ class MainActivity : ComponentActivity() {
 
 
 //top container
+
+@Composable
+fun WorkerName(name: String, jobRole: String, modifier: Modifier) {
+    //first line of text will be slightly bigger than the second line
+    Column {
+        Text(text = name)
+        //second line - different color / smaller
+        Text(text = jobRole)
+    }
+}
+
 @Composable
 fun BusinessLogo(modifier: Modifier = Modifier) {
     val image = painterResource(R.drawable.android_logo)
-    Image(
-        painter = image,
-        contentDescription = null
-    )
-}
-
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    BusinessCardAppTheme {
-        Greeting("Android")
+    Box {
+        Image(
+            painter = image,
+            contentDescription = null
+        )
+        WorkerName(
+            name = "Noah Gilkey", jobRole = "Business Intel Developer", modifier = Modifier
+        )
     }
 }
