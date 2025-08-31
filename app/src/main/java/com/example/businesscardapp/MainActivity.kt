@@ -9,15 +9,21 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.filled.Share
+
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+
 import com.example.businesscardapp.ui.theme.BusinessCardAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -70,20 +76,38 @@ fun BusinessLogo(modifier: Modifier = Modifier) {
 //first of three elements; Phone number, social handle, email
 @Composable
 fun PhoneNumber(modifier: Modifier){
-
+    //icon
+    Icon(
+        imageVector = Icons.Filled.Phone,
+        contentDescription = "Phone"
+    )
 }
 @Composable
 fun SocialMedia(modifier: Modifier) {
+    //icon
+    Icon(
+        imageVector = Icons.Filled.Share,
+        contentDescription = "Share"
+    )
 
 }
 @Composable
 fun Email(modifier: Modifier) {
-
+    //icon
+    Icon(
+        imageVector = Icons.Filled.Email,
+        contentDescription = "Home"
+    )
 }
 //main container for the bottom section
 @Composable
 fun ContactSection(modifier: Modifier){
-    PhoneNumber(modifier)
-    SocialMedia(modifier)
-    Email(modifier)
+    //these will be in a container with a column alignment
+    Box {
+        Column {
+            PhoneNumber(modifier)
+            SocialMedia(modifier)
+            Email(modifier)
+        }
+    }
 }
