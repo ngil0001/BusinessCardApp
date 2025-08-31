@@ -37,6 +37,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     BusinessLogo(modifier = Modifier)
+                    ContactSection(modifier = Modifier)
                 }
             }
         }
@@ -75,29 +76,39 @@ fun BusinessLogo(modifier: Modifier = Modifier) {
 //bottom container
 //first of three elements; Phone number, social handle, email
 @Composable
-fun PhoneNumber(modifier: Modifier){
+fun PhoneNumber(number: String, modifier: Modifier){
     //icon
     Icon(
         imageVector = Icons.Filled.Phone,
         contentDescription = "Phone"
     )
+    Text(
+        text = number
+    )
 }
 @Composable
-fun SocialMedia(modifier: Modifier) {
+fun SocialMedia(socialHandle: String, modifier: Modifier) {
     //icon
     Icon(
         imageVector = Icons.Filled.Share,
         contentDescription = "Share"
     )
+    Text(
+        text = socialHandle
+    )
 
 }
 @Composable
-fun Email(modifier: Modifier) {
+fun Email(email: String, modifier: Modifier) {
     //icon
     Icon(
         imageVector = Icons.Filled.Email,
         contentDescription = "Home"
     )
+    Text(
+        text = email
+    )
+
 }
 //main container for the bottom section
 @Composable
@@ -105,9 +116,9 @@ fun ContactSection(modifier: Modifier){
     //these will be in a container with a column alignment
     Box {
         Column {
-            PhoneNumber(modifier)
-            SocialMedia(modifier)
-            Email(modifier)
+            PhoneNumber(number = "1111111111", modifier)
+            SocialMedia(socialHandle = "@111111", modifier)
+            Email(email = "1111@11111.com", modifier)
         }
     }
 }
