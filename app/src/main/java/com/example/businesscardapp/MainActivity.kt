@@ -65,3 +65,25 @@ fun BusinessLogo(modifier: Modifier = Modifier) {
         )
     }
 }
+
+//bottom container
+//first of three elements; Phone number, social handle, email
+@Composable
+fun PhoneNumber(modifier: Modifier){
+
+}
+@Composable
+fun SocialMedia(modifier: Modifier) {
+
+}
+@Composable
+fun Email(modifier: Modifier) {
+
+}
+//main container for the bottom section
+@Composable
+fun ContactSection(modifier: Modifier){
+    PhoneNumber(modifier)
+    SocialMedia(modifier)
+    Email(modifier)
+}
