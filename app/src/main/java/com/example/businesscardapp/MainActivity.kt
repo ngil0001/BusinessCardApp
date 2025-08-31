@@ -21,6 +21,7 @@ import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -123,8 +124,12 @@ fun Email(email: String, modifier: Modifier) {
 //main container for the bottom section
 @Composable
 fun ContactSection(modifier: Modifier){
-    //these will be in a container with a column alignment
-    Box {
+    //aligns the container to the bottom center
+    Box(
+        modifier = modifier,
+        contentAlignment = Alignment.BottomCenter
+    ){
+        //aligns the components in a column; each component is self aligned in a row
         Column {
             PhoneNumber(number = "1111111111", modifier)
             SocialMedia(socialHandle = "@111111", modifier)
