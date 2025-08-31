@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 
 import androidx.compose.material3.Icon
@@ -78,36 +79,45 @@ fun BusinessLogo(modifier: Modifier = Modifier) {
 @Composable
 fun PhoneNumber(number: String, modifier: Modifier){
     //icon
-    Icon(
-        imageVector = Icons.Filled.Phone,
-        contentDescription = "Phone"
-    )
-    Text(
-        text = number
-    )
+    Row {
+        Icon(
+            imageVector = Icons.Filled.Phone,
+            contentDescription = "Phone"
+        )
+        // text passed from ContactSection
+        Text(
+            text = number
+        )
+    }
 }
 @Composable
 fun SocialMedia(socialHandle: String, modifier: Modifier) {
     //icon
-    Icon(
-        imageVector = Icons.Filled.Share,
-        contentDescription = "Share"
-    )
-    Text(
-        text = socialHandle
-    )
+    Row {
+        Icon(
+            imageVector = Icons.Filled.Share,
+            contentDescription = "Share"
+        )
+        // text passed from ContactSection
+        Text(
+            text = socialHandle
+        )
+    }
 
 }
 @Composable
 fun Email(email: String, modifier: Modifier) {
     //icon
-    Icon(
-        imageVector = Icons.Filled.Email,
-        contentDescription = "Home"
-    )
-    Text(
-        text = email
-    )
+    Row {
+        Icon(
+            imageVector = Icons.Filled.Email,
+            contentDescription = "Home"
+        )
+        // text passed from ContactSection
+        Text(
+            text = email
+        )
+    }
 
 }
 //main container for the bottom section
