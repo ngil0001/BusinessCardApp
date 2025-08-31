@@ -13,10 +13,13 @@ import androidx.compose.foundation.layout.Column
 
 
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -34,6 +37,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 import com.example.businesscardapp.ui.theme.BusinessCardAppTheme
 
@@ -45,7 +49,7 @@ class MainActivity : ComponentActivity() {
             BusinessCardAppTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = Color(0xFF3ddc84)
+                    color = Color(0xFF9CADA5)
                 ) {
                     MainSection(modifier = Modifier)
                     ContactSection(modifier = Modifier)
@@ -66,7 +70,8 @@ fun WorkerName(name: String, modifier: Modifier) {
         Text(
             text = name,
             modifier = modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            fontSize = 28.sp
         )
 }
 
@@ -76,7 +81,9 @@ fun JobTitle(jobRole: String, modifier: Modifier) {
     Text(
         text = jobRole,
         modifier = modifier.fillMaxWidth(),
-        textAlign = TextAlign.Center
+        textAlign = TextAlign.Center,
+        fontSize = 12.sp,
+        color = Color(0xFF194D1C)
     )
 }
 
@@ -98,7 +105,9 @@ fun MainSection(modifier: Modifier = Modifier) {
         modifier = modifier.fillMaxWidth().padding(16.dp),
         contentAlignment = Alignment.Center
     ) {
-        Column{
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
             BusinessLogo(modifier)
             WorkerName(
                 name = "John Doe", modifier = Modifier
@@ -118,6 +127,7 @@ fun PhoneNumber(number: String, modifier: Modifier){
             imageVector = Icons.Filled.Phone,
             contentDescription = "Phone"
         )
+        Spacer(Modifier.width(8.dp))
         // text passed from ContactSection
         Text(
             text = number
@@ -132,6 +142,7 @@ fun SocialMedia(socialHandle: String, modifier: Modifier) {
             imageVector = Icons.Filled.Share,
             contentDescription = "Share"
         )
+        Spacer(Modifier.width(8.dp))
         // text passed from ContactSection
         Text(
             text = socialHandle
@@ -147,6 +158,7 @@ fun Email(email: String, modifier: Modifier) {
             imageVector = Icons.Filled.Email,
             contentDescription = "Home"
         )
+        Spacer(Modifier.width(8.dp))
         // text passed from ContactSection
         Text(
             text = email
@@ -159,13 +171,16 @@ fun Email(email: String, modifier: Modifier) {
 fun ContactSection(modifier: Modifier){
     //aligns the container to the bottom center
     Box(
-        modifier = modifier,
+        modifier = modifier.padding(bottom = 72.dp),
+
         contentAlignment = Alignment.BottomCenter
     ){
         //aligns the components in a column; each component is self aligned in a row
-        Column {
+        Column{
             PhoneNumber(number = "+1 (123) 456 7890", modifier)
+            Spacer(Modifier.height(8.dp))
             SocialMedia(socialHandle = "@TestName", modifier)
+            Spacer(Modifier.height(8.dp))
             Email(email = "email@domain.com", modifier)
         }
     }
