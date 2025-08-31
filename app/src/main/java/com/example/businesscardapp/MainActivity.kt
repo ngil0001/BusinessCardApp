@@ -7,9 +7,16 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+
+
 import androidx.compose.foundation.layout.Column
+
+
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -25,6 +32,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 
 import com.example.businesscardapp.ui.theme.BusinessCardAppTheme
 
@@ -36,9 +45,9 @@ class MainActivity : ComponentActivity() {
             BusinessCardAppTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = Color(0xFF3ddc84)
                 ) {
-                    BusinessLogo(modifier = Modifier)
+                    MainSection(modifier = Modifier)
                     ContactSection(modifier = Modifier)
                 }
             }
@@ -52,26 +61,50 @@ class MainActivity : ComponentActivity() {
 //top container
 
 @Composable
-fun WorkerName(name: String, jobRole: String, modifier: Modifier) {
-    //first line of text will be slightly bigger than the second line
-    Column {
-        Text(text = name)
-        //second line - different color / smaller
-        Text(text = jobRole)
-    }
+fun WorkerName(name: String, modifier: Modifier) {
+    //text for persons name, align to center, bigger font sizing
+        Text(
+            text = name,
+            modifier = modifier.fillMaxWidth(),
+            textAlign = TextAlign.Center
+        )
+}
+
+@Composable
+fun JobTitle(jobRole: String, modifier: Modifier) {
+    //text for job title, align to center, smaller font sizing, green colored
+    Text(
+        text = jobRole,
+        modifier = modifier.fillMaxWidth(),
+        textAlign = TextAlign.Center
+    )
 }
 
 @Composable
 fun BusinessLogo(modifier: Modifier = Modifier) {
+    //image resource
     val image = painterResource(R.drawable.android_logo)
-    Box {
         Image(
             painter = image,
-            contentDescription = null
+            contentDescription = "Android logo",
+            modifier = modifier.size(100.dp)
         )
-        WorkerName(
-            name = "Noah Gilkey", jobRole = "Business Intel Developer", modifier = Modifier
-        )
+}
+
+@Composable
+fun MainSection(modifier: Modifier = Modifier) {
+    //main container, align to center of screen
+    Box(
+        modifier = modifier.fillMaxWidth().padding(16.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Column{
+            BusinessLogo(modifier)
+            WorkerName(
+                name = "John Doe", modifier = Modifier
+            )
+            JobTitle(jobRole = "Android Developer", modifier)
+        }
     }
 }
 
@@ -131,9 +164,9 @@ fun ContactSection(modifier: Modifier){
     ){
         //aligns the components in a column; each component is self aligned in a row
         Column {
-            PhoneNumber(number = "1111111111", modifier)
-            SocialMedia(socialHandle = "@111111", modifier)
-            Email(email = "1111@11111.com", modifier)
+            PhoneNumber(number = "+1 (123) 456 7890", modifier)
+            SocialMedia(socialHandle = "@TestName", modifier)
+            Email(email = "email@domain.com", modifier)
         }
     }
 }
